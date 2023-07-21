@@ -1,0 +1,13 @@
+Example	Alt	Bar	Fri	Hun	Pat	Price	Rain	Res	Type	Est	Will Wait
+x1	yes	no	no	yes	Some	$$$	No	Yes	French	0-10	y1 = yes
+x2	yes	no	no	yes	Full	$	No	No	Thai	30-60	y2 = no
+x3	no	yes	no	no	Some	$	No	No	Burger	0-10	y3 = yes
+x4	yes	no	yes	yes	Full	$	Yes	No	Thai	10-30	y4 = yes
+x5	yes	no	yes	no	Full	$$$	No	Yes	French	>60	y5 = no
+x6	no	yes	yes	yes	Some	$$	Yes	Yes	Italian	0-10	y6 = yes
+x7	no	yes	yes	no	None	$	Yes	No	Burger	0-10	y7 = no
+x8	no	no	no	yes	Some	$$	Yes	Yes	Thai	0-10	y8 = yes
+x9	no	yes	yes	no	Full	$	Yes	No	Burger	>60	y9 = no
+x10	yes	yes	yes	yes	Full	$$$	No	Yes	Italian	10-30	y10 = no
+x11	no	no	no	no	None	$	No	No	Thai	0-10	y11 = no
+x12	yes	yes	yes	yes	Full	$	No	No	Burger	30-60	y12 = yes
