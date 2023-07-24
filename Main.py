@@ -7,7 +7,7 @@ Edited Date: 7/21/23
 
 import csv
 from tabulate import tabulate #used to display the 2D array
-import tkinter as tk
+from GUI import window
 
 #allows the user to read a csv file and import it as a 2D array
 def read_csv_file(file_path):
@@ -27,8 +27,8 @@ def display_array(FilledCSVData):
 def main():
     file_path = 'restaurant.csv' #this will stay the same
     FilledCSVData = read_csv_file(file_path)
-    #display_array(FilledCSVData) READ THE COMMENT ON THE METHOD
-
+    display_array(FilledCSVData) #READ THE COMMENT ON THE METHOD
+    window() #this will display the window for the tree's and such
 
 if __name__ == "__main__":
     main()

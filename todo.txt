@@ -1,0 +1,8 @@
+GUI:   
+
+Learning:
+    Imported the algorithm Tyler coded for the homework, waiting on Hayden to check it
+
+General:
+
+Urgent:
