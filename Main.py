@@ -8,6 +8,9 @@ Edited Date: 7/21/23
 import csv
 from tabulate import tabulate #used to display the 2D array
 from GUI import window
+from Learning import DecisionTree
+import numpy as np
+import pandas as pd
 
 #allows the user to read a csv file and import it as a 2D array
 def read_csv_file(file_path):
@@ -25,10 +28,15 @@ def display_array(FilledCSVData):
     print(tabulate(data, headers=myheaders, tablefmt = "simple"))
 
 def main():
-    file_path = 'restaurant.csv' #this will stay the same
-    FilledCSVData = read_csv_file(file_path)
-    display_array(FilledCSVData) #READ THE COMMENT ON THE METHOD
+    # clf = DecisionTree()
+    rest_data = pd.read_csv("restaurant.csv")
+    rest_data.columns = ["Alt", "Bar", "Friday?", "Hungry?", "NumPatrons", "Price", "Rain?", "Res", "Type", "Est wait Time", "(Output)WillWait"]
+    print(rest_data)
+    # FilledCSVData = read_csv_file("restaurant.csv")
+    # display_array(FilledCSVData) #READ THE COMMENT ON THE METHOD
     window() #this will display the window for the tree's and such
+    # clf.fit(restaurant_train_df, restaurant_test_df)
+
 
 if __name__ == "__main__":
     main()

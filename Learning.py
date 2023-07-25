@@ -15,7 +15,7 @@ class Node:
         self.threshold = threshold
         self.left = left
         self.right = right
-        self.value = None
+        self.value = value
 
     def is_leaf_node(self):
         return self.value is not None
@@ -39,11 +39,11 @@ class DecisionTree:
         n_labels = len(np.unique(y))
         
         #check stopping criteria
-        if(depth >= self.max_depth or n_labels == 1 or n_samples<self.min_samples_split):
+        if(depth >= self.max_depth or n_labels == 1 or n_samples < self.min_samples_split):
             leaf_value = self._most_common_label(y)
             return Node(value=leaf_value)
 
-        feat_idxs = np.random.choice(n_feats, self.n_features, replace=False)
+        feat_idxs = np.random.choice(n_feats, self.n_features, replace=False) #not choosing randomly, we choose based on best information gain
 
         #find best split
         best_feature, best_thresh = self._best_split(x, y, feat_idxs)
@@ -106,7 +106,7 @@ class DecisionTree:
 
 
     def _split(self, x_column, split_thresh):
-        left_idxs = np.argwhere(x_column <= split_thresh).flatten()
+        left_idxs = np.argwhere(x_column <= split_thresh).flatten() #returns indices that meet criteria (x_column <= split_thresh) & in flat list in one dimension
         right_idxs = np.argmax(x_column > split_thresh).flatten()
         return left_idxs, right_idxs
 
@@ -115,12 +115,15 @@ class DecisionTree:
 
         ps = hist /len(y)
 
-        return -np.sum([p * np.log(p) for p in ps if p>0])
+        return -np.sum([p * np.log(p) for p in ps if p>0]) #maybe change just to fit with notes?
+    
+    # def _parent_entropy(self, y):
+        
 
     def predict(self, X):
         return np.array([self._traverse_tree(x) for x in X])
     
-    def _traverse_tree(self, x , node):
+    def _traverse_tree(self, x , node): #recursively traverse the tree
         if node.is_leaf_node():
             return node.value
         
@@ -128,3 +131,4 @@ class DecisionTree:
             return self._traverse_tree(x, node.left)
         
         return self._traverse_tree(x, node.right)
+    

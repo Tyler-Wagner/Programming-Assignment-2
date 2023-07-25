@@ -1,0 +1,21 @@
+node: 
+- children (?) or left & right
+- attribute (on which we are splitting)
+- depth
+- examples (list)
+
+is_leaf_node(self)
+
+-----------------------------------------------------
+
+decisiontree:
+- root_node
+- max_depth
+
+entropy(attribute_values)
+
+information_gain(?)
+
+split(?)
+
+best_split(?)
