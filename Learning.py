@@ -27,6 +27,10 @@ class DecisionTree:
         self.n_features= n_features
         self.root=None
     
+    #X and Y are the different sets
+    #X was training data
+    #Y was testing data
+
     def fit(self, x, y):
         self.n_features = x.shape[1] if not self.n_features else min(x.shape[1], self.n_features)
 
@@ -104,12 +108,13 @@ class DecisionTree:
         information_gain = parent_entropy - child_entropy
         return information_gain
 
-
+    #decides if the node should split
     def _split(self, x_column, split_thresh):
         left_idxs = np.argwhere(x_column <= split_thresh).flatten() #returns indices that meet criteria (x_column <= split_thresh) & in flat list in one dimension
         right_idxs = np.argmax(x_column > split_thresh).flatten()
         return left_idxs, right_idxs
 
+    #calculates the entropy of the node
     def _entropy(self, y):
         hist = np.bincount(y)
 
@@ -119,7 +124,7 @@ class DecisionTree:
     
     # def _parent_entropy(self, y):
         
-
+    #predicts the node
     def predict(self, X):
         return np.array([self._traverse_tree(x) for x in X])
     

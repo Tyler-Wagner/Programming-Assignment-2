@@ -2,13 +2,13 @@
 Original Creator: Tyler Wagner
 Date Created: 7/21/23
 Edited By: Tyler Wagner
-Edited Date: 7/21/23
+Edited Date: 7/25/23
 """
 
 import csv
 from tabulate import tabulate #used to display the 2D array
 from GUI import window
-from Learning import DecisionTree
+from HTLearning import DecisionTree, Node
 import numpy as np
 import pandas as pd
 
@@ -28,14 +28,17 @@ def display_array(FilledCSVData):
     print(tabulate(data, headers=myheaders, tablefmt = "simple"))
 
 def main():
-    # clf = DecisionTree()
-    rest_data = pd.read_csv("restaurant.csv")
-    rest_data.columns = ["Alt", "Bar", "Friday?", "Hungry?", "NumPatrons", "Price", "Rain?", "Res", "Type", "Est wait Time", "(Output)WillWait"]
-    print(rest_data)
-    # FilledCSVData = read_csv_file("restaurant.csv")
-    # display_array(FilledCSVData) #READ THE COMMENT ON THE METHOD
-    window() #this will display the window for the tree's and such
-    # clf.fit(restaurant_train_df, restaurant_test_df)
+    
+    tree = DecisionTree(max_depth=10) #change max depth to be a user input
+    training_rest_data = pd.read_csv("restaurant.csv")
+    training_rest_data.columns = ["Alt", "Bar", "Friday?", "Hungry?", "NumPatrons", "Price", "Rain?", "Res", "Type", "Est wait Time", "(Output)WillWait"]
+    testing_rest_data = pd.read_csv("restaurant_test.csv")
+    testing_rest_data.columns = ["Alt", "Bar", "Friday?", "Hungry?", "NumPatrons", "Price", "Rain?", "Res", "Type", "Est wait Time", "(Output)WillWait"]
+    #print(tree._most_common_label(training_rest_data))
+
+    #error checking area
+    #print(training_rest_data.isnull().sum())
+    print(training_rest_data.dtypes)
 
 
 if __name__ == "__main__":
