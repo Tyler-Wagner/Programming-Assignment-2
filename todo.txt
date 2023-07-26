@@ -1,8 +1,7 @@
 GUI:   
-
+    
 Learning:
     Imported the algorithm Tyler coded for the homework, waiting on Hayden to check it
-    How to start using algorithm and the steps: Hayden
 
 General:
 
