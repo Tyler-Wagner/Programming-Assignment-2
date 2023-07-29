@@ -69,7 +69,7 @@ class DecisionTree:
 
     def _best_split(self, x, y, feat_idxs):
         best_gain = -1
-        split_idx, split_threshold = None
+        split_idx, split_threshold = None, None
 
         for feat_idx, in feat_idxs:
             x_column = x[:, feat_idx]
@@ -111,7 +111,7 @@ class DecisionTree:
     #decides if the node should split
     def _split(self, x_column, split_thresh):
         left_idxs = np.argwhere(x_column <= split_thresh).flatten() #returns indices that meet criteria (x_column <= split_thresh) & in flat list in one dimension
-        right_idxs = np.argmax(x_column > split_thresh).flatten()
+        right_idxs = np.argwhere(x_column > split_thresh).flatten()
         return left_idxs, right_idxs
 
     #calculates the entropy of the node
